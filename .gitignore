@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pylibs/
+.venv/
+venv/
+
+# Datasets (copyrighted, >100 MB) - download per Limitation-3/ECERC/ext/README.md
+**/data/
+
+# Training artefacts (model weights, raw outputs, logs)
+**/runs/**/*.pt
+**/runs/**/*.pth
+**/runs/**/*.npz
+**/runs/logs/
+*.ckpt
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
