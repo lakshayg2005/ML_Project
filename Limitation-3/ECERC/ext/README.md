@@ -73,7 +73,7 @@ tau_i = tau_min + (tau_max - tau_min) * sigmoid(MLP(h_i))                  (SOP 
 g_i   = softmax( (W_g [f1;f2;f3;f4] + b_g) / tau_i ,  masked to available causes )   (SOP Eq. 2 + mask)
 fused = [4 g_i1 f1 ; 4 g_i2 f2 ; 4 g_i3 f3 ; 4 g_i4 f4]
 ```
-* `W_g, b_g` are zero-initialised, so at initialisation CACG is *exactly* the original ECERC (verified).
+* `W_g, b_g` are zero-initialised, so at initialisation (with the mask off) CACG is *exactly* the original ECERC (verified). With the mask on, it differs only on utterances where some cause has no history.
 * **Availability mask**: a cause with no valid history gets weight 0, which removes the noisy
   vectors from bug 2 instead of feeding them to the classifier.
 
