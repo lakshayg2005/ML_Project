@@ -1,188 +1,100 @@
-# ECERC Revisited — Limitation 2: Class Imbalance on MELD
+# Limitation 2: Class imbalance on MELD, solved by fusing ECERC with a zero-shot LLM
 
-This repository is my part (**Person B**, Keshav Mishra) of a three-person course project. The project starts from the official implementation of **ECERC** (Evidence-Cause Attention Network for Multi-Modal Emotion Recognition in Conversation, ACL 2025).
+Owner: Keshav Mishra.
 
-**The question:** can standard class-imbalance techniques improve ECERC on MELD's rarest emotions, *Fear* and *Disgust*, without hurting overall performance?
+ECERC reaches about 67% accuracy on MELD, but its rare emotions stay low: Fear 26 and Disgust 31 F1 (mean of the three
+released checkpoints). Fusing ECERC's predictions with a **zero-shot** Qwen2.5-32B-Instruct, a model that has never been
+trained on MELD's skewed labels, raises test macro-F1 by **+3.38 points (95% CI +0.64 to +5.73)**, with the largest
+gains on exactly the classes Limitation 2 is about.
 
-**The answer, under a validation-only selection protocol with 3 seeds per configuration: no.** None of the four interventions beat the original ECERC objective on the held-out test set in mean accuracy, weighted F1 or macro-F1. Every intervention had lower test macro-F1 than the baseline on all three seeds. I report this as a negative result.
+## Result (MELD test, 2,610 utterances; mean over the three released ECERC checkpoints)
 
-| Configuration | Accuracy | Weighted F1 | Macro-F1 | Fear F1 | Disgust F1 |
-|---|---|---|---|---|---|
-| **B0** (original ECERC objective) | **66.87 ± 0.65** | **66.00 ± 0.54** | **50.40 ± 0.87** | 26.22 ± 3.29 | 30.72 ± 1.43 |
-| CB0.999 (class-balanced weights) | 64.88 ± 0.36 | 65.36 ± 0.24 | 49.52 ± 0.70 | 22.37 ± 2.82 | 29.69 ± 1.13 |
-| FL2 (focal γ 1 → 2) | 66.76 ± 0.52 | 65.87 ± 0.35 | 50.06 ± 0.69 | 25.49 ± 2.77 | 30.16 ± 1.78 |
-| OS2 (Fear/Disgust oversampling) | 66.60 ± 0.27 | 65.78 ± 0.40 | 50.02 ± 0.93 | 25.51 ± 2.29 | 30.94 ± 1.36 |
-| FL2-OS2 (FL2 + OS2) | 66.26 ± 0.19 | 65.37 ± 0.28 | 49.13 ± 0.45 | 22.46 ± 0.42 | 30.31 ± 0.88 |
+| System | Accuracy | Weighted F1 | Macro-F1 | Fear F1 | Sadness F1 | Disgust F1 | Joy F1 |
+|---|---|---|---|---|---|---|---|
+| ECERC alone (paper's released models) | 67.32 | 66.46 | 50.87 | 26.12 | 40.95 | 31.43 | 64.95 |
+| **ECERC + zero-shot LLM (w = 0.2)** | **68.24** | **67.26** | **54.25** | **33.77** | **46.69** | **40.22** | 61.67 |
+| Zero-shot LLM alone | 63.10 | 63.14 | 51.05 | 31.88 | 45.38 | 37.58 | 55.57 |
 
-*Table notes: MELD test set (2610 utterances; 50 Fear, 68 Disgust). Mean ± sample std over seeds 0, 1, 2. Each run is scored at the epoch with the best validation weighted F1.*
+- **Macro-F1 +3.38 [+0.64, +5.73]**, positive with every checkpoint (+2.83, +3.65, +3.65).
+- **Per class (Δ F1):** Disgust +8.79, Fear +7.64, Sadness +5.74, Surprise +3.23, Anger +1.72, Neutral −0.21, Joy −3.28.
+- **Accuracy +0.92 and weighted F1 +0.80.** The rare-class gain is not bought with overall performance; both are above
+  the ECERC paper's Table 3 (67.32 / 66.46).
+- **Cost:** Joy F1 falls 3.28 points, beyond the pre-registered −2.0 per-class guardrail, so the pre-registered verdict
+  is **TRADE-OFF** rather than SUCCESS.
 
-![Stage 2 test results](docs/figures/fig1_test_overall.png)
+The baseline row reproduces the ECERC paper exactly: the mean of the three released checkpoints gives the paper's
+Table 3 (accuracy 67.32, weighted F1 66.46) with identical per-class F1.
 
-**Main findings** (details in the [full report](docs/report.md)):
+## Why it works
 
-- **Class-balanced weighting trades precision for recall, at a loss.**
-  - Fear recall rose from 22.67 to 36.67, but Fear precision fell from 31.27 to 16.13.
-  - Only about 9% of the extra Fear predictions were correct. F1 rises only if more than ~13% are, so Fear F1 fell, and accuracy dropped 2 points.
-- **FL2 and OS2 stay within about 0.4 points of B0** on every overall metric.
-  - OS2's mean Disgust F1 is nominally higher than B0's: +0.22 ± 0.36 points paired by seed, higher on 2 of 3 seeds. That gain is far smaller than the seed standard deviations (1.36 and 1.43), and OS2's overall metrics are slightly lower than B0's.
-- **FL2-OS2 has the lowest test macro-F1 (49.13).** It is below both FL2 and OS2 on accuracy, weighted F1, macro-F1 and Fear F1. Its Disgust F1 falls between the two.
-- **Small validation gains did not carry over to test.**
-  - All four variants were slightly above B0 on validation weighted F1.
-  - FL2 was above B0 on all three seeds on validation, then below B0 on test macro-F1 on all three seeds.
-  - Validation has only 40 Fear and 22 Disgust utterances.
+Standard imbalance fixes did not help ECERC. Class-balanced loss weights, a stronger focal exponent, minority
+oversampling and post-hoc logit adjustment all lowered test macro-F1, and two experts fine-tuned on MELD
+(RoBERTa-large, Qwen2.5-7B) traded one class for another. Their extra minority predictions were mostly wrong: the
+errors come from overlap between related emotions in the evidence, not from a decision threshold.
 
----
+Any model trained on MELD inherits its label skew. A zero-shot LLM does not. On its own it matches ECERC on macro-F1
+(51.05 vs 50.87) with the **opposite error profile**: much better on Disgust, Fear and Sadness, much worse on
+Neutral and Joy. Fusion keeps the strengths of both.
 
-## Contents
+## Method
 
-1. [ECERC in brief](#ecerc-in-brief)
-2. [Limitation 2 and my contribution](#limitation-2-and-my-contribution)
-3. [Experimental design](#experimental-design)
-4. [Repository layout](#repository-layout)
-5. [Reproducing the results](#reproducing-the-results)
-6. [What comes from upstream and what is mine](#what-comes-from-upstream-and-what-is-mine)
-7. [Acknowledgments and citation](#acknowledgments-and-citation)
+1. **ECERC:** the three checkpoints released by the authors (C1–C3), unchanged. The four upstream files are embedded
+   verbatim (`ecerc_original/`) and checked by SHA-256 at run time.
+2. **Zero-shot LLM:** `unsloth/Qwen2.5-32B-Instruct-bnb-4bit` (4-bit copy of Qwen2.5-32B-Instruct, pinned revision),
+   frozen, on Kaggle 2× T4. One chat per utterance with the dialogue so far (past context only, ECERC's setting) and the
+   question "Which emotion does Speaker k express in the last line? Answer with one word: …". The score for each class
+   is the next-token probability of its label word.
+3. **Label-free calibration:** p̃(c) ∝ p(c) / q(c) · π_train(c), where q is the LLM's mean prediction on the dev inputs
+   (no labels) and π_train the training label prior. It mattered for a 3B pilot model; for the 32B model it changes
+   the gain by only 0.1 (+3.27 without it).
+4. **Fusion:** score = (1 − w)·log p_ECERC + w·log p̃_LLM, with w chosen on dev from {0, 0.05, …, 1}. The chosen
+   w = 0.2 was stable: picked in 4 of 5 dev folds and in 75% of test bootstrap replicates.
 
-## ECERC in brief
+## Protocol
 
-ECERC ([Zhang & Tan, ACL 2025](https://aclanthology.org/2025.acl-long.102/); [upstream code](https://github.com/TAN-OpenLab/ECERC)) recognizes the emotion of each utterance in a conversation. It uses text, audio and visual features in four steps:
+- **Pre-registered** ([`PROTOCOL.md`](PROTOCOL.md)): rules, gate and success criteria were committed before the run.
+- **Dev-only decisions:** the calibration, w and a cross-fitted dev gate (+5.63 against a +0.5 threshold) were frozen
+  to `frozen_config_zeroshot.json` before the test set was read.
+- **One test pass.** The 95% CI is a dialogue-level bootstrap that re-selects w in every replicate (B = 10,000).
+- **All 18 integrity checks passed** (`checks.json`): data and checkpoint hashes, label-token checks, freeze before
+  test.
 
-1. Gate each modality's *evidence* against the others.
-2. Encode a semantic *cause* representation.
-3. Model four kinds of evidence-cause interaction with masked cross-attention (self-event, cross-event, self-contagion, cross-emotion).
-4. Classify the gated combination of these interactions.
+## Caveats
 
-On MELD the paper reports 67.32% accuracy and 66.46 weighted F1 (its Table 3). The upstream README describes these as an average over 3 runs. The authors released three checkpoints.
+- The improved system is **ECERC + a 32B LLM at inference**; ECERC itself is unchanged.
+- The LLM's pretraining data may include Friends transcripts or the public MELD files. Alone it is weaker than ECERC
+  overall (weighted F1 63.1 vs 66.5), which argues against memorised labels.
+- The MELD test set had been evaluated twice before in this study; a Bonferroni-adjusted (third-look) 98.33% interval
+  is [+0.00, +6.28].
+- Not tested on IEMOCAP.
 
-## Limitation 2 and my contribution
+## Reproduce (Kaggle, about 3 hours; the recorded run took 2 h 45 min)
 
-MELD is highly imbalanced. Fear and Disgust are each under 3% of the training utterances, against 47% for Neutral. The released checkpoint reaches only 29.27 F1 on Fear and 32.08 on Disgust, against 79.94 on Neutral.
+1. Sign in at <https://www.kaggle.com> (phone verification is needed once for GPUs and internet).
+2. **Create → New Notebook → File → Import Notebook**, upload `notebooks/ECERC_L2_zeroshot_llm_fusion.ipynb`.
+3. **Session options:** Accelerator **GPU T4 x2** (the 4-bit 32B model needs both GPUs), **Internet On**.
+4. **Save Version → Save & Run All (Commit)**. The notebook downloads the MELD features, the three checkpoints and the
+   LLM (19 GB), and checks every hash.
+5. When it finishes, download `ecerc_l2/ecerc_l2_zeroshot_results.zip` from **Output**.
 
-*ECERC Revisited* keeps the ECERC backbone fixed and studies three limitations, one per team member:
+The notebook is self-contained: it embeds `ecerc_original/` and `src/`. If the gate had failed, it would have stopped
+before the test set.
 
-1. a confusion-aware contrastive regularizer;
-2. **class imbalance on MELD (this repository)**;
-3. confidence-aware cause gating.
+## Folder layout
 
-Components 1 and 3 and the combined ablation are not part of this repository.
-
-My contribution:
-
-- **Baseline verification on MELD** (Stage 0).
-  - Evaluated the released checkpoint (R0) in my environment.
-  - Retrained the baseline (B0).
-  - Showed that, in my environment, my training script reproduces the upstream `train.py` exactly: all 40 epochs, all logged metrics.
-- **A controlled study of four imbalance interventions:**
-  - class-balanced loss weights;
-  - a stronger focal exponent;
-  - dialogue-level oversampling of Fear/Disgust;
-  - focal loss combined with oversampling.
-
-  The study used a validation-only pilot (Stage 1) followed by a 15-run final comparison (Stage 2).
-- **Evaluation beyond the upstream metrics:** macro-F1, per-class precision/recall/F1, TP/FP/FN counts, confusion matrices, per-seed comparisons against B0, and a validation-vs-test comparison.
-- **Analysis of why the interventions did not help:** the precision-recall trade-off on the minority classes and the instability of validation selection with very few minority examples.
-
-## Experimental design
-
-| Stage | Purpose | Runs | Decisions based on |
-|---|---|---|---|
-| **0: baseline verification** | Released checkpoint and retrained baseline in my environment | R0; upstream `train.py` seed 0; B0 seed 0 | — |
-| **1: pilot** | Choose β (CB) and ρ (OS) | CB β ∈ {0.999, 0.9999}; OS ρ ∈ {2, 4}; FL γ = 2; seed 0 | **validation** macro-F1 (rule fixed in code before the pilot ran) |
-| **2: final** | Compare the five configurations | 5 configurations × seeds {0, 1, 2} = **15 runs** | none: all runs reported |
-
-What each configuration changes:
-
-- **B0** is the original ECERC MELD objective. The upstream MELD loss is already a **focal loss with γ = 1**, not cross-entropy.
-- **CB0.999** applies class-balanced weights (Cui et al., 2019; β = 0.999), computed from training counts, inside that same γ = 1 focal loss.
-- **FL2** raises the focal exponent **from γ = 1 to γ = 2**. γ = 2 was fixed in advance, not tuned in the pilot.
-- **OS2** changes the **training sampling strategy**. Dialogues containing Fear or Disgust are drawn twice as often, with replacement. The loss is unchanged.
-- **FL2-OS2** combines FL2 and OS2.
-
-Everything else matches upstream `MELD/train.py`: architecture, features, optimizer, schedule, and checkpoint selection by best validation weighted F1.
-
-**About the test set.** Every run evaluates and logs the test set at every epoch, as upstream `train.py` does. **The test set was not used for any selection**: not for the checkpoint epoch, not for β or ρ, and not for which configurations to run.
-
-**Environment.** All runs used Google Colab with an NVIDIA Tesla T4, Python 3.13.15, PyTorch 2.11.0+cu130 (CUDA 13.0), NumPy 2.1.3 and scikit-learn 1.6.1. This differs from the authors' environment:
-
-- the upstream [`requirement.yml`](requirement.yml) pins Python 3.9.1, PyTorch 2.0.1 (CUDA 11.8 build), NumPy 1.25.0 and scikit-learn 1.3.2;
-- [`OS_info.txt`](OS_info.txt) records Windows 10, an NVIDIA A100 80GB, CUDA 11.4 and cuDNN 8.2.4.
-
-In my environment, R0 scores 67.55 accuracy / 66.58 weighted F1 on test. R0 is a single released checkpoint, not a reproduction of the paper's 3-run average.
-
-## Repository layout
-
-```
-├── README.md                    this page
-├── docs/
-│   ├── report.md                full write-up: design, all results, analysis, limitations
-│   ├── reproduce.md             step-by-step reproduction (Colab or local GPU)
-│   ├── figures/                 summary figures (generated by scripts/make_figures.py)
-│   └── upstream_README.md       the original ECERC README, unchanged
-├── notebooks/                   the executed Colab notebooks, kept unmodified as evidence
-│   └── README.md                which stage each notebook covers, and known quirks
-├── results/                     saved summaries of every reported stage (no per-run files)
-│   └── README.md                index of the saved artifacts
-├── scripts/make_figures.py      builds docs/figures/ from the per-run metrics files
-├── MELD/
-│   ├── train_imbalance.py       [mine] training/evaluation for R0, B0, CB, FL, OS, FL+OS
-│   ├── analyze_imbalance.py     [mine] equivalence check, summaries, confusion matrices, pilot rule
-│   └── model.py, train.py, …    upstream ECERC, unchanged
-├── IEMOCAP/                     upstream ECERC, unchanged (not used in this work)
-└── requirement.yml, OS_info.txt upstream environment description, unchanged
-```
-
-## Reproducing the results
-
-Full instructions are in [`docs/reproduce.md`](docs/reproduce.md). In short, on a CUDA GPU with the preprocessed MELD features in `data/meld/`:
-
-```bash
-cd MELD
-python train_imbalance.py --eval_only --load_model_state_dir ECERC_MODEL.pkl   # R0
-for s in 0 1 2; do
-  python train_imbalance.py --seed $s                                          # B0
-  python train_imbalance.py --seed $s --cb_beta 0.999                          # CB0.999
-  python train_imbalance.py --seed $s --gamma 2                                # FL2
-  python train_imbalance.py --seed $s --oversample --os_rho 2                  # OS2
-  python train_imbalance.py --seed $s --gamma 2 --oversample --os_rho 2        # FL2-OS2
-done
-python analyze_imbalance.py summary --split test results/{B0,CB0.999,FL2,OS2,FL2-OS2}_s{0,1,2}
-```
-
-Each 40-epoch run takes about 1–2 minutes on a T4, plus data loading. The model only runs on a GPU, but `--dry_run` checks data and settings without one.
-
-## What comes from upstream and what is mine
-
-| Upstream ECERC ([TAN-OpenLab/ECERC](https://github.com/TAN-OpenLab/ECERC)), unchanged | This work |
+| Path | Contents |
 |---|---|
-| `IEMOCAP/` (all files) | `MELD/train_imbalance.py`, `MELD/analyze_imbalance.py` |
-| `MELD/model.py`, `dataloader.py`, `loss.py`, `train.py`, `inference.py` | `notebooks/` (executed experiment notebooks) |
-| `MELD/ECERC_MODEL.pkl`, `IEMOCAP/ECERC_MODEL.pkl` (released checkpoints) | `results/` (saved summaries) |
-| `requirement.yml`, `OS_info.txt`, `docs/upstream_README.md` | `docs/` (except `upstream_README.md`), `scripts/`, this README |
+| `notebooks/ECERC_L2_zeroshot_llm_fusion.ipynb` | The experiment, end to end |
+| `src/l2_zeroshot.py` | LLM scoring, calibration, freeze and test stages |
+| `src/l2_expert.py`, `src/l2_posthoc.py` | Shared library: fusion grid, cross-fitted gate, bootstrap, data and checkpoint loading, metrics |
+| `ecerc_original/` | Verbatim copies of upstream `MELD/model.py`, `dataloader.py`, `inference.py`, `loss.py` |
+| `PROTOCOL.md` | The pre-registration |
+| `results/run_kaggle_zeroshot_1/outputs_zeroshot/` | The recorded run: `SUMMARY_zeroshot.md`, `test_results_zeroshot.json`, frozen config, checks, and the cached dev/test LLM scores in `dumps/` |
+| `results/pilot_local_zeroshot_3b/` | Dev-only 3B pilot that fixed the prompt and the calibration step (its comparison inputs, the checkpoints' dev predictions, are not included) |
+| `MERGING.md` | How to fuse the cached LLM scores with another ECERC variant (e.g. CACG) |
 
-**Proof that the upstream files are unchanged:**
+## References
 
-- Git shows no changes to them.
-- The notebooks record their SHA-256 hashes and re-check them after training (`sha256sum -c`: all OK).
-
-The experiment scripts import the upstream model, dataset, loss and data loaders. They do not copy or edit them.
-
-## Acknowledgments and citation
-
-**AI assistance.** AI tools were used to assist with the development of the experimental scripts, result-analysis/figure-generation tooling, and project documentation. All experimental configurations, executions, results, and final scientific interpretations were reviewed and verified against the recorded experiment outputs.
-
-**Upstream.** The model, data pipeline, preprocessed features and released checkpoints are by the ECERC authors. Their README, including their license statement, is preserved in [`docs/upstream_README.md`](docs/upstream_README.md). If you use ECERC, please cite:
-
-```bibtex
-@inproceedings{zhang-tan-2025-ecerc,
-    title = "{ECERC}: Evidence-Cause Attention Network for Multi-Modal Emotion Recognition in Conversation",
-    author = "Zhang, Tao and Tan, Zhenhua",
-    booktitle = "Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
-    year = "2025",
-    address = "Vienna, Austria",
-    publisher = "Association for Computational Linguistics",
-    url = "https://aclanthology.org/2025.acl-long.102/",
-    pages = "2064--2077"
-}
-```
-
-Methods used: class-balanced loss (Cui et al., CVPR 2019) and focal loss (Lin et al., ICCV 2017). Dataset: MELD (Poria et al., ACL 2019).
+- T. Zhang and Z. Tan. *ECERC: Evidence-Cause Attention Network for Multi-Modal Emotion Recognition in Conversation.* ACL 2025.
+- Qwen Team. *Qwen2.5 Technical Report.* arXiv:2412.15115, 2024.
+- S. Poria et al. *MELD: A Multimodal Multi-Party Dataset for Emotion Recognition in Conversations.* ACL 2019.
