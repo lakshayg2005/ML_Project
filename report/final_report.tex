@@ -461,6 +461,21 @@ Merged, single run (mean of 20) & 71.36 & 71.59 & 70.19 & 13.64 & 3.41 \\
 
 The ensemble row is the mean of 4 separate groups of 5 runs. It beat the authors' average in 3 of those 4 groups. Against the retrained baseline, the merged model gains 1.89 wF1 and is better in all 20 runs. A single run sits within 0.2 wF1 of the authors, 8 of the 20 runs beat them, and the best run reaches 72.95.
 
+\begin{center}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lccc}
+\toprule
+Clear-utterance errors & Baseline & WavLM + VAD & Merged (L1 + L3) \\
+\midrule
+Angry--Frustrated & 16.9 & 13.5 (better in 16 of 20) & 15.4 (better in 12 of 20) \\
+Happy--Excited & 12.4 & 12.5 & 11.8 (better in 11 of 20) \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+On clear utterances, the merged model keeps part of the L1 gain on Angry--Frustrated, cutting errors by 1.5 against the baseline, but it gives back about half of what WavLM + VAD alone achieved. It is the only system that lowers Happy--Excited errors, though 11 of 20 runs is close to chance, so this is not a clear improvement.
+
 \subsection{MELD: L2 + L3 (Keshav Mishra)}
 
 This system uses CACG with no gate loss, the authors' focal loss, LLM fusion at $w = 0.2$, and temperature scaling. It was retrained on 3 seeds in \path{Merge-L2-L3/ext}, which is a copy of the rewritten code with L2 added, so unlike the IEMOCAP merge it does not run on the authors' code. Every $w$ and $T$ was fixed on dev before test was read.
