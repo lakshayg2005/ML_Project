@@ -2,8 +2,8 @@
 official release and loads the released checkpoints (parameter names are unchanged).
 
 forward() returns a dict so the other two extensions can hook in:
-  out['log_prob']  (N, C)      flattened over valid utterances -> class-balanced / focal loss (Limitation 2)
-  out['fused']     (N, 4*3h)   representation fed to the classifier -> contrastive regularizer (Limitation 1)
+  out['log_prob']  (N, C)      flattened over valid utterances -> focal task loss / soft labels (L2, L1)
+  out['fused']     (N, 4*3h)   representation fed to the classifier -> auxiliary VAD head (Limitation 1)
   out['gate']      dict         CACG internals -> gate loss (Limitation 3)
 """
 import torch

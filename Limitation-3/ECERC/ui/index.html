@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ECERC-Revisited Demo</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f7f6f3; --surface: #ffffff; --surface-2: #f0efec; --border: #e2e0da;
+  --ink: #1f1e1c; --ink-2: #57564f; --ink-3: #8a897f;
+  --accent: #2a78d6; --good: #1d7a3a; --bad: #c0362c; --warn: #a86b00;
+  --e-hap: #eda100; --e-joy: #eda100; --e-exc: #eb6834; --e-sad: #2a78d6; --e-neu: #9b9a92;
+  --e-ang: #e34948; --e-fru: #e87ba4; --e-sur: #1baf7a; --e-fea: #6250d6; --e-dis: #008300;
+  --bar: #2a78d6; --llm: #eb6834;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #121211; --surface: #1a1a19; --surface-2: #242422; --border: #34342f;
+    --ink: #f0efec; --ink-2: #c3c2b7; --ink-3: #8f8e85;
+    --accent: #3987e5; --good: #4fb36b; --bad: #e66767; --warn: #e0a030;
+    --e-hap: #c98500; --e-joy: #c98500; --e-exc: #d95926; --e-sad: #3987e5; --e-neu: #77766e;
+    --e-ang: #e66767; --e-fru: #d55181; --e-sur: #199e70; --e-fea: #9085e9; --e-dis: #2a9a2a;
+    --bar: #3987e5; --llm: #d95926;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121211; --surface: #1a1a19; --surface-2: #242422; --border: #34342f;
+  --ink: #f0efec; --ink-2: #c3c2b7; --ink-3: #8f8e85;
+  --accent: #3987e5; --good: #4fb36b; --bad: #e66767; --warn: #e0a030;
+  --e-hap: #c98500; --e-joy: #c98500; --e-exc: #d95926; --e-sad: #3987e5; --e-neu: #77766e;
+  --e-ang: #e66767; --e-fru: #d55181; --e-sur: #199e70; --e-fea: #9085e9; --e-dis: #2a9a2a;
+  --bar: #3987e5; --llm: #d95926;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+header { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; padding: 14px 20px; background: var(--surface); border-bottom: 1px solid var(--border); }
+h1 { font-size: 17px; margin: 0; font-weight: 650; }
+h1 small { font-weight: 400; color: var(--ink-3); margin-left: 6px; }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.seg button { border: 0; background: transparent; color: var(--ink-2); padding: 6px 14px; font: inherit; cursor: pointer; }
+.seg button.on { background: var(--accent); color: #fff; }
+.spacer { flex: 1; }
+.iconbtn { border: 1px solid var(--border); background: transparent; color: var(--ink-2); border-radius: 8px; padding: 5px 10px; cursor: pointer; font: inherit; }
+.strip { display: flex; flex-wrap: wrap; gap: 8px 28px; padding: 12px 20px; border-bottom: 1px solid var(--border); background: var(--surface); }
+.parts { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.part { font-size: 12px; padding: 3px 9px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--border); }
+.stats { display: flex; flex-wrap: wrap; gap: 4px 22px; align-items: baseline; }
+.stat b { font-size: 16px; font-variant-numeric: tabular-nums; }
+.stat span { color: var(--ink-3); font-size: 12px; margin-left: 4px; }
+main { display: grid; grid-template-columns: 250px minmax(0, 1fr) 330px; height: calc(100vh - 118px); min-height: 480px; }
+aside, section { overflow: auto; }
+#list { border-right: 1px solid var(--border); background: var(--surface); }
+.listhead { position: sticky; top: 0; background: var(--surface); padding: 10px 12px; border-bottom: 1px solid var(--border); display: flex; gap: 6px; align-items: center; font-size: 12px; color: var(--ink-3); }
+.listhead select { font: inherit; color: var(--ink); background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; padding: 2px 4px; }
+.drow { display: grid; grid-template-columns: 1fr 44px; gap: 2px 8px; padding: 8px 12px; border-bottom: 1px solid var(--border); cursor: pointer; }
+.drow:hover { background: var(--surface-2); }
+.drow.on { background: var(--surface-2); box-shadow: inset 3px 0 0 var(--accent); }
+.drow .id { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.drow .acc { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 12px; }
+.drow .meter { grid-column: 1 / -1; height: 4px; background: var(--surface-2); border-radius: 2px; overflow: hidden; }
+.drow .meter i { display: block; height: 100%; background: var(--bar); border-radius: 2px; }
+#chat { padding: 18px 22px 40px; }
+.chathead { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; color: var(--ink-3); font-size: 12px; }
+.chathead b { color: var(--ink); font-size: 14px; }
+.utt { max-width: 78%; margin: 0 0 10px; padding: 9px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; cursor: pointer; }
+.utt.right { margin-left: auto; }
+.utt.sel { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.utt .who { font-size: 11px; color: var(--ink-3); margin-bottom: 2px; }
+.utt .txt { margin-bottom: 6px; }
+.utt .foot { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 12px; color: var(--ink-2); }
+.chip { display: inline-flex; align-items: center; gap: 5px; font-weight: 600; color: var(--ink); }
+.dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex: none; }
+.ok { color: var(--good); font-weight: 600; }
+.no { color: var(--bad); font-weight: 600; }
+.flag { color: var(--warn); font-weight: 600; }
+#detail { border-left: 1px solid var(--border); background: var(--surface); padding: 16px 18px 40px; }
+#detail h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-3); margin: 18px 0 8px; font-weight: 600; }
+#detail h2:first-child { margin-top: 0; }
+.quote { color: var(--ink); background: var(--surface-2); border-radius: 8px; padding: 8px 10px; }
+.brow { display: grid; grid-template-columns: 78px 1fr 44px; gap: 8px; align-items: center; margin: 5px 0; font-size: 12px; }
+.brow .lab { color: var(--ink-2); display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+.brow .val { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+.track { height: 10px; background: var(--surface-2); border-radius: 0 4px 4px 0; position: relative; }
+.track i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 0 4px 4px 0; }
+.track.na { background: repeating-linear-gradient(45deg, var(--surface-2) 0 4px, transparent 4px 8px); }
+.trio { display: grid; grid-template-columns: 1fr; gap: 2px; }
+.trio .track { height: 6px; }
+.legend { display: flex; gap: 12px; font-size: 11px; color: var(--ink-3); margin-bottom: 4px; flex-wrap: wrap; }
+.legend span { display: inline-flex; align-items: center; gap: 4px; }
+.sw { width: 12px; height: 6px; border-radius: 2px; display: inline-block; }
+.note { font-size: 12px; color: var(--ink-3); margin-top: 6px; }
+.empty { color: var(--ink-3); padding: 30px 0; }
+@media (max-width: 1000px) {
+  main { grid-template-columns: 1fr; height: auto; }
+  #list { max-height: 240px; border-right: 0; border-bottom: 1px solid var(--border); }
+  #detail { border-left: 0; border-top: 1px solid var(--border); }
+  .utt { max-width: 100%; }
+  #chat { padding: 16px; }
+  header, .strip { padding-left: 16px; padding-right: 16px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>ECERC-Revisited <small>emotion recognition in conversation · test-set replay</small></h1>
+  <div class="seg" id="dsSeg"></div>
+  <div class="spacer"></div>
+  <button class="iconbtn" id="theme" title="Toggle light / dark">◐ Theme</button>
+</header>
+<div class="strip">
+  <div class="parts" id="parts"></div>
+  <div class="stats" id="stats"></div>
+</div>
+<main>
+  <aside id="list"></aside>
+  <section id="chat"><div class="empty">Loading the model outputs…</div></section>
+  <aside id="detail"><div class="empty">Click an utterance to see why the model predicted it.</div></aside>
+</main>
+<script>
+const FULL = {hap:'Happy', sad:'Sad', neu:'Neutral', ang:'Angry', exc:'Excited', fru:'Frustrated',
+              sur:'Surprise', fea:'Fear', joy:'Joy', dis:'Disgust'};
+const col = e => `var(--e-${e})`;
+const pct = x => (100 * x).toFixed(0) + '%';
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let META = null, ds = null, cur = null, sel = null, sortMode = 'id';
+
+try { const t = localStorage.getItem('ecerc-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+document.getElementById('theme').onclick = () => {
+  const dark = getComputedStyle(document.documentElement).colorScheme === 'dark';
+  document.documentElement.dataset.theme = dark ? 'light' : 'dark';
+  try { localStorage.setItem('ecerc-theme', document.documentElement.dataset.theme); } catch (e) {}
+};
+
+async function init() {
+  META = await (await fetch('/api/meta')).json();
+  const seg = document.getElementById('dsSeg');
+  seg.innerHTML = Object.keys(META).map(d => `<button data-ds="${d}">${d}</button>`).join('');
+  seg.onclick = e => { if (e.target.dataset.ds) setDs(e.target.dataset.ds); };
+  // deep link: #DATASET/dialogue/turn, e.g. #MELD/1153/2
+  const [hds, hid, hturn] = decodeURIComponent(location.hash.slice(1)).split('/');
+  await setDs(META[hds] ? hds : Object.keys(META)[0], hid);
+  if (hturn && cur.utts[+hturn - 1]) { sel = +hturn - 1; renderChat(); renderDetail(); }
+}
+
+async function setDs(d, id) {
+  ds = d; sel = null;
+  document.querySelectorAll('#dsSeg button').forEach(b => b.classList.toggle('on', b.dataset.ds === d));
+  const m = META[d], s = m.summary;
+  document.getElementById('parts').innerHTML = m.parts.map(p => `<span class="part">${esc(p)}</span>`).join('');
+  document.getElementById('stats').innerHTML =
+    `<span class="stat"><b>${s.wf1.toFixed(2)}</b><span>test wF1</span></span>` +
+    `<span class="stat"><b>${s.acc.toFixed(2)}</b><span>accuracy</span></span>` +
+    `<span class="stat"><b>${s.mf1.toFixed(2)}</b><span>macro-F1</span></span>` +
+    `<span class="stat"><b>${s.ece.toFixed(2)}</b><span>ECE (calibrated)</span></span>` +
+    `<span class="stat" title="Threshold set on the validation set so that 20% of validation predictions are flagged">` +
+    `<b class="flag">⚠ ${s.flag_share.toFixed(0)}%</b><span>flagged · accuracy ${s.acc_kept.toFixed(1)}% unflagged vs ${s.acc_flagged.toFixed(1)}% flagged</span></span>`;
+  renderList();
+  await loadDialogue(m.list.some(x => x.id === id) ? id : m.list[0].id);
+}
+
+function renderList() {
+  const m = META[ds];
+  const items = [...m.list];
+  if (sortMode === 'worst') items.sort((a, b) => a.acc - b.acc);
+  const el = document.getElementById('list');
+  el.innerHTML = `<div class="listhead">${items.length} test dialogues <span class="spacer"></span>
+    <select id="sort"><option value="id">in order</option><option value="worst">hardest first</option></select></div>` +
+    items.map(d => `<div class="drow${cur && cur.id === d.id ? ' on' : ''}" data-id="${esc(d.id)}">
+      <span class="id">${esc(ds === 'MELD' ? 'Dialogue ' + d.id : d.id)}</span><span class="acc">${pct(d.acc)}</span>
+      <span class="meter"><i style="width:${100 * d.acc}%"></i></span></div>`).join('');
+  const s = document.getElementById('sort'); s.value = sortMode;
+  s.onchange = () => { sortMode = s.value; renderList(); };
+  el.querySelectorAll('.drow').forEach(r => r.onclick = () => loadDialogue(r.dataset.id));
+}
+
+async function loadDialogue(id) {
+  cur = await (await fetch(`/api/dialogue?ds=${ds}&id=${encodeURIComponent(id)}`)).json();
+  sel = null;
+  document.querySelectorAll('.drow').forEach(r => r.classList.toggle('on', r.dataset.id === id));
+  renderChat();
+  document.getElementById('detail').innerHTML = '<div class="empty">Click an utterance to see why the model predicted it.</div>';
+}
+
+function renderChat() {
+  const names = META[ds].names;
+  const first = cur.utts[0] ? cur.utts[0].speaker : '';
+  const correct = cur.utts.filter(u => u.pred === u.label).length;
+  document.getElementById('chat').innerHTML =
+    `<div class="chathead"><b>${esc(ds === 'MELD' ? 'Dialogue ' + cur.id : cur.id)}</b>
+      <span>${cur.n} utterances · ${correct} correct · ${cur.utts.filter(u => u.flag).length} flagged</span></div>` +
+    cur.utts.map((u, i) => `<div class="utt${u.speaker !== first ? ' right' : ''}${sel === i ? ' sel' : ''}" data-i="${i}">
+      <div class="who">${esc(u.speaker)} · turn ${i + 1}</div>
+      <div class="txt">${esc(u.text)}</div>
+      <div class="foot"><span class="chip"><span class="dot" style="background:${col(u.pred)}"></span>${FULL[u.pred]}</span>
+        <span>${pct(u.conf)}</span>
+        ${u.pred === u.label ? '<span class="ok">✓</span>' : `<span class="no">✗ true: ${FULL[u.label]}</span>`}
+        ${u.flag ? '<span class="flag" title="Low confidence: among the 20% least confident predictions">⚠ unsure</span>' : ''}</div>
+    </div>`).join('');
+  document.querySelectorAll('.utt').forEach(el => el.onclick = () => {
+    sel = +el.dataset.i; renderChat(); renderDetail();
+    history.replaceState(null, '', `#${ds}/${cur.id}/${sel + 1}`);
+  });
+}
+
+function bar(label, v, color, valText, na) {
+  return `<div class="brow"><span class="lab">${label}</span>
+    <span class="track${na ? ' na' : ''}">${na ? '' : `<i style="width:${100 * v}%;background:${color}"></i>`}</span>
+    <span class="val">${valText}</span></div>`;
+}
+
+function renderDetail() {
+  const u = cur.utts[sel], m = META[ds], names = m.names;
+  let h = `<h2>Utterance</h2><div class="quote">${esc(u.text)}</div>
+    <div class="note">${esc(u.speaker)} · true emotion <b>${FULL[u.label]}</b> · predicted <b>${FULL[u.pred]}</b> (${pct(u.conf)})</div>`;
+  if (u.model_probs) {
+    h += `<h2>Emotion probabilities (L2 fusion)</h2>
+      <div class="legend"><span><i class="sw" style="background:var(--ink-3)"></i>ECERC model</span>
+      <span><i class="sw" style="background:var(--llm)"></i>LLM</span>
+      <span><i class="sw" style="background:var(--accent)"></i>fused (final)</span></div>`;
+    names.forEach((e, k) => {
+      h += `<div class="brow"><span class="lab"><span class="dot" style="background:${col(e)}"></span>${FULL[e]}</span>
+        <span class="trio">
+          <span class="track"><i style="width:${100 * u.model_probs[k]}%;background:var(--ink-3)"></i></span>
+          <span class="track"><i style="width:${100 * u.llm_probs[k]}%;background:var(--llm)"></i></span>
+          <span class="track"><i style="width:${100 * u.probs[k]}%;background:var(--accent)"></i></span></span>
+        <span class="val">${pct(u.probs[k])}</span></div>`;
+    });
+    h += `<div class="note">Final = (1 − w)·log p<sub>model</sub> + w·log p<sub>LLM</sub>, w = ${m.summary.fused_w} chosen on validation, then temperature-scaled.</div>`;
+  } else {
+    h += `<h2>Emotion probabilities (calibrated)</h2>`;
+    names.forEach((e, k) => h += bar(`<span class="dot" style="background:${col(e)}"></span>${FULL[e]}`, u.probs[k], col(e), pct(u.probs[k])));
+    h += `<div class="note">Mean of ${m.summary.members} temperature-scaled models (seed ensemble).</div>`;
+  }
+  if (u.causes) {
+    h += `<h2>Which cause the model relied on (L3 CACG)</h2>`;
+    m.causes.forEach((c, k) => h += bar(c, u.causes[k], 'var(--bar)', u.avail[k] ? pct(u.causes[k]) : 'n/a', !u.avail[k]));
+    h += `<div class="note">Gate weights g over the four cause types (sum to 100%). Hatched = no history of that kind yet
+      (e.g. the speaker's first turn), so CACG masks it. Gate temperature τ = ${u.tau.toFixed(2)}.</div>`;
+  }
+  h += `<h2>Confidence</h2><div class="note">${u.flag
+    ? '<span class="flag">⚠ Flagged as unsure.</span> This prediction is among the 20% least confident (threshold from validation); such predictions are wrong far more often, so a system would defer them to a human.'
+    : 'Confident enough not to be flagged. After temperature scaling, a confidence of p means the model is right about p of the time.'}</div>`;
+  document.getElementById('detail').innerHTML = h;
+}
+
+init();
+</script>
+</body>
+</html>

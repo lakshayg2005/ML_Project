@@ -61,6 +61,8 @@ The SOP's entropy loss `(H(π) − a·log 4)²` was tested and **removed**: it i
 
 ## 3. Results
 
+> **Correction (2026-10-30).** The MELD numbers below were trained with γ = 0, but the release's `MELD/loss.py` uses focal γ = 1. The true retrained MELD baseline is 65.90 wF1 / 49.78 mF1 with raw ECE 3.62, and with that loss CACG does not beat it (65.51 / 49.25). IEMOCAP is unaffected. See [`FINAL_MODEL.md`](../FINAL_MODEL.md).
+
 Test set, mean ± std over 3 seeds. ECE in %, raw → after temperature scaling (TS). Lower ECE is better.
 
 | Variant | IEMOCAP wF1 | IEMOCAP ECE | MELD wF1 | MELD mF1 | MELD ECE |

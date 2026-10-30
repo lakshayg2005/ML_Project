@@ -30,7 +30,7 @@ def collect(model, loader, device):
     model.eval()
     lp, y, z = [], [], []
     for data in loader:
-        U_e, sem, qmask, umask, seq_lengths, labels = T.unpack(data, device)
+        U_e, sem, qmask, umask, seq_lengths, labels, _ = T.unpack(data, device)
         out = model(U_e, sem, qmask, umask, seq_lengths)
         feats = [out['desc']]
         if out['gate'] is not None:
@@ -85,9 +85,11 @@ def main():
     for jf in sorted(glob.glob(os.path.join(a.runs, a.dataset, '*_seed*.json'))):
         r = json.load(open(jf))
         args = argparse.Namespace(**r['args'])
-        for k, v in [('aux_heads', False), ('fix_empty_attention', 0), ('mask_unavailable', 1)]:
+        for k, v in [('aux_heads', False), ('fix_empty_attention', 0), ('mask_unavailable', 1), ('audio', 'default')]:
             if not hasattr(args, k):
                 setattr(args, k, v)
+        if args.audio != 'default':  # CA-TS analysis covers the IS10-audio grid; merged runs: final_report.py
+            continue
         model = T.build_model(args, cfg).to(device)
         model.load_state_dict(torch.load(jf.replace('.json', '.pt'), map_location=device))
         vlp, vy, vz = collect(model, valid_loader, device)

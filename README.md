@@ -4,6 +4,8 @@ Course project extending **ECERC: Evidence-Cause Attention Network for Multi-Mod
 Conversation** (Zhang & Tan, ACL 2025; official code: https://github.com/TAN-OpenLab/ECERC).
 The project plan is in [ML_SOP.pdf](ML_SOP.pdf).
 
+**Final merged model (ECERC + L1 + L2 + L3), results and demo UI: [FINAL_MODEL.md](FINAL_MODEL.md).**
+
 Each team member works on one limitation in their own folder:
 
 | Folder | Limitation | Owner |
