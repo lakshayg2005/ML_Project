@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 781" width="760" height="781" role="img" aria-label="ECERC as released by the authors">
+<title>ECERC as released by the authors</title>
+<rect x="0" y="0" width="760" height="781" fill="#FFFFFF"/>
+<rect x="24" y="330" width="712" height="120" rx="8" ry="8" fill="#FAFBFC" stroke="#66717E" stroke-width="1.5"/>
+<path d="M 82 136 L 82.0 152.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="82,160 77.5,152.0 86.5,152.0" fill="#3D4852"/>
+<path d="M 209 136 L 209.0 152.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="209,160 204.5,152.0 213.5,152.0" fill="#3D4852"/>
+<path d="M 336 136 L 336.0 152.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="336,160 331.5,152.0 340.5,152.0" fill="#3D4852"/>
+<path d="M 487 136 L 487.0 152.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="487,160 482.5,152.0 491.5,152.0" fill="#3D4852"/>
+<path d="M 487 216 L 487.0 232.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="487,240 482.5,232.0 491.5,232.0" fill="#3D4852"/>
+<path d="M 137 216 L 137.0 232.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="137,240 132.5,232.0 141.5,232.0" fill="#3D4852"/>
+<path d="M 137 296 L 137.0 322.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="137,330 132.5,322.0 141.5,322.0" fill="#3D4852"/>
+<path d="M 336 216 L 336.0 322.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="336,330 331.5,322.0 340.5,322.0" fill="#3D4852"/>
+<path d="M 487 296 L 487.0 322.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="487,330 482.5,322.0 491.5,322.0" fill="#3D4852"/>
+<path d="M 661 136 L 661.0 322.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="661,330 656.5,322.0 665.5,322.0" fill="#3D4852"/>
+<path d="M 380 450 L 380.0 466.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="380,474 375.5,466.0 384.5,466.0" fill="#3D4852"/>
+<path d="M 380 530 L 380.0 546.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="380,554 375.5,546.0 384.5,546.0" fill="#3D4852"/>
+<path d="M 380.0 610 L 380.0 626.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="380.0,634 375.5,626.0 384.5,626.0" fill="#3D4852"/>
+<path d="M 380.0 690 L 380.0 706.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="380.0,714 375.5,706.0 384.5,706.0" fill="#3D4852"/>
+<text x="24" y="32" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#1F2933" text-anchor="start" font-weight="bold">ECERC as released by the authors</text>
+<rect x="24" y="46" width="14" height="14" rx="3" ry="3" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="44" y="57" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="start">ECERC paper</text>
+<rect x="24" y="72" width="116" height="64" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="82.0" y="100.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Text t</text>
+<text x="82.0" y="117.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Emotion RoBERTa</text>
+<rect x="151" y="72" width="116" height="64" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="209.0" y="91.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Audio a</text>
+<text x="209.0" y="108.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">IEMOCAP: 1582-d</text>
+<text x="209.0" y="125.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">MELD: 300-d</text>
+<rect x="278" y="72" width="116" height="64" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="336.0" y="100.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Visual v</text>
+<text x="336.0" y="117.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">342-d</text>
+<rect x="414" y="72" width="146" height="64" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="487.0" y="100.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Semantic s</text>
+<text x="487.0" y="117.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">RoBERTa, 1024-d</text>
+<rect x="586" y="72" width="150" height="64" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="661.0" y="100.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Speaker IDs</text>
+<text x="661.0" y="117.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Who said each turn</text>
+<rect x="24" y="160" width="370" height="56" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="209.0" y="184.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Evidence Gating</text>
+<text x="209.0" y="201.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Cross-modal sigmoid gates, 128-d each, 384-d output</text>
+<rect x="414" y="160" width="146" height="56" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="487.0" y="184.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Projection</text>
+<text x="487.0" y="201.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">1024-d to 128-d</text>
+<rect x="24" y="240" width="226" height="56" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="137.0" y="264.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Emotion Encoder</text>
+<text x="137.0" y="281.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Key and value for f1, f2</text>
+<rect x="414" y="240" width="146" height="56" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="487.0" y="264.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Event Encoder</text>
+<text x="487.0" y="281.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Key, value for f3, f4</text>
+<text x="380" y="352" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Evidence-Cause Interaction: 4 cross-attentions</text>
+<rect x="40" y="362" width="161" height="72" rx="8" ry="8" fill="#FFFFFF" stroke="#66717E" stroke-width="1.5"/>
+<text x="120.5" y="385.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">f1 Self-contagion</text>
+<text x="120.5" y="402.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Same speaker's</text>
+<text x="120.5" y="419.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">past turns</text>
+<rect x="213" y="362" width="161" height="72" rx="8" ry="8" fill="#FFFFFF" stroke="#66717E" stroke-width="1.5"/>
+<text x="293.5" y="385.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">f2 Cross-emotion</text>
+<text x="293.5" y="402.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Other speakers'</text>
+<text x="293.5" y="419.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">past turns</text>
+<rect x="386" y="362" width="161" height="72" rx="8" ry="8" fill="#FFFFFF" stroke="#66717E" stroke-width="1.5"/>
+<text x="466.5" y="385.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">f3 Self-event</text>
+<text x="466.5" y="402.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">The utterance's</text>
+<text x="466.5" y="419.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">own event</text>
+<rect x="559" y="362" width="161" height="72" rx="8" ry="8" fill="#FFFFFF" stroke="#66717E" stroke-width="1.5"/>
+<text x="639.5" y="385.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">f4 Cross-event</text>
+<text x="639.5" y="402.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Other speakers'</text>
+<text x="639.5" y="419.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">past events</text>
+<rect x="24" y="474" width="712" height="56" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="380.0" y="498.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Feature Gating</text>
+<text x="380.0" y="515.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Element-wise sigmoid gate on each cause, 384-d each</text>
+<text x="344" y="316" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#3E4A56" text-anchor="start">Evidence as query</text>
+<text x="653" y="316" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#3E4A56" text-anchor="end">Speaker masks</text>
+<rect x="24" y="554" width="712" height="56" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="380.0" y="578.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Concatenate the four causes</text>
+<text x="380.0" y="595.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">4 × 384 = 1536-d fused feature R</text>
+<rect x="24" y="634" width="712" height="56" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="380.0" y="658.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Classifier</text>
+<text x="380.0" y="675.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Linear layer: 6 emotions on IEMOCAP, 7 on MELD</text>
+<rect x="24" y="714" width="712" height="43" rx="8" ry="8" fill="#FFFFFF" stroke="#66717E" stroke-width="1.5"/>
+<text x="380.0" y="731.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Output for each utterance</text>
+<text x="380.0" y="748.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Authors' checkpoints: IEMOCAP wF1 71.78, MELD wF1 66.46</text>
+</svg>

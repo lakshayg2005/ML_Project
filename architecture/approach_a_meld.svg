@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 1073" width="760" height="1073" role="img" aria-label="Approach A, MELD: Keshav Mishra's merge of L2 and L3">
+<title>Approach A, MELD: Keshav Mishra's merge of L2 and L3</title>
+<rect x="0" y="0" width="760" height="1073" fill="#FFFFFF"/>
+<rect x="24" y="330" width="712" height="120" rx="8" ry="8" fill="#FAFBFC" stroke="#66717E" stroke-width="1.5"/>
+<rect x="24" y="554" width="712" height="188" rx="8" ry="8" fill="#E9E8FB" stroke="#4338CA" stroke-width="1.5"/>
+<path d="M 82 136 L 82.0 152.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="82,160 77.5,152.0 86.5,152.0" fill="#3D4852"/>
+<path d="M 209 136 L 209.0 152.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="209,160 204.5,152.0 213.5,152.0" fill="#3D4852"/>
+<path d="M 336 136 L 336.0 152.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="336,160 331.5,152.0 340.5,152.0" fill="#3D4852"/>
+<path d="M 487 136 L 487.0 152.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="487,160 482.5,152.0 491.5,152.0" fill="#3D4852"/>
+<path d="M 487 216 L 487.0 232.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="487,240 482.5,232.0 491.5,232.0" fill="#3D4852"/>
+<path d="M 137 216 L 137.0 232.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="137,240 132.5,232.0 141.5,232.0" fill="#3D4852"/>
+<path d="M 137 296 L 137.0 322.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="137,330 132.5,322.0 141.5,322.0" fill="#3D4852"/>
+<path d="M 336 216 L 336.0 322.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="336,330 331.5,322.0 340.5,322.0" fill="#3D4852"/>
+<path d="M 487 296 L 487.0 322.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="487,330 482.5,322.0 491.5,322.0" fill="#3D4852"/>
+<path d="M 661 136 L 661.0 322.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="661,330 656.5,322.0 665.5,322.0" fill="#3D4852"/>
+<path d="M 380 450 L 380.0 466.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="380,474 375.5,466.0 384.5,466.0" fill="#3D4852"/>
+<path d="M 380 530 L 380.0 546.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="380,554 375.5,546.0 384.5,546.0" fill="#3D4852"/>
+<path d="M 24 188 L 12 188 L 12 618 L 32.0 618.0" fill="none" stroke="#3D4852" stroke-width="1.5" stroke-dasharray="6 4"/>
+<polygon points="40,618 32.0,622.5 32.0,613.5" fill="#3D4852"/>
+<path d="M 201 618 L 205.0 618.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="213,618 205.0,622.5 205.0,613.5" fill="#3D4852"/>
+<path d="M 293.5 650 L 293.5 662.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="293.5,670 289.0,662.0 298.0,662.0" fill="#3D4852"/>
+<path d="M 466.5 650 L 466.5 662.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="466.5,670 462.0,662.0 471.0,662.0" fill="#3D4852"/>
+<path d="M 639.5 650 L 639.5 662.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="639.5,670 635.0,662.0 644.0,662.0" fill="#3D4852"/>
+<path d="M 244.0 742 L 244.0 758.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="244.0,766 239.5,758.0 248.5,758.0" fill="#3D4852"/>
+<path d="M 244.0 822 L 244.0 838.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="244.0,846 239.5,838.0 248.5,838.0" fill="#3D4852"/>
+<path d="M 488 874 L 472.0 874.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="464,874 472.0,869.5 472.0,878.5" fill="#3D4852"/>
+<path d="M 244.0 902 L 244.0 918.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="244.0,926 239.5,918.0 248.5,918.0" fill="#3D4852"/>
+<path d="M 244.0 982 L 244.0 998.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="244.0,1006 239.5,998.0 248.5,998.0" fill="#3D4852"/>
+<text x="24" y="32" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#1F2933" text-anchor="start" font-weight="bold">Approach A, MELD: Keshav Mishra's merge of L2 and L3</text>
+<rect x="24" y="46" width="14" height="14" rx="3" ry="3" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="44" y="57" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="start">ECERC paper</text>
+<rect x="130.6" y="46" width="14" height="14" rx="3" ry="3" fill="#FCEBD7" stroke="#B45309" stroke-width="1.5"/>
+<text x="150.6" y="57" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="start">L2 Keshav Mishra</text>
+<rect x="270.2" y="46" width="14" height="14" rx="3" ry="3" fill="#E9E8FB" stroke="#4338CA" stroke-width="1.5"/>
+<text x="290.2" y="57" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="start">L3 Lakshay Gupta</text>
+<rect x="24" y="72" width="116" height="64" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="82.0" y="100.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Text t</text>
+<text x="82.0" y="117.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Emotion RoBERTa</text>
+<rect x="151" y="72" width="116" height="64" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="209.0" y="100.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Audio a</text>
+<text x="209.0" y="117.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">MELD: 300-d</text>
+<rect x="278" y="72" width="116" height="64" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="336.0" y="100.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Visual v</text>
+<text x="336.0" y="117.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">342-d</text>
+<rect x="414" y="72" width="146" height="64" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="487.0" y="100.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Semantic s</text>
+<text x="487.0" y="117.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">RoBERTa, 1024-d</text>
+<rect x="586" y="72" width="150" height="64" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="661.0" y="100.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Speaker IDs</text>
+<text x="661.0" y="117.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Who said each turn</text>
+<rect x="24" y="160" width="370" height="56" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="209.0" y="184.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Evidence Gating</text>
+<text x="209.0" y="201.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Cross-modal sigmoid gates, 128-d each, 384-d output</text>
+<rect x="414" y="160" width="146" height="56" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="487.0" y="184.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Projection</text>
+<text x="487.0" y="201.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">1024-d to 128-d</text>
+<rect x="24" y="240" width="226" height="56" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="137.0" y="264.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Emotion Encoder</text>
+<text x="137.0" y="281.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Key and value for f1, f2</text>
+<rect x="414" y="240" width="146" height="56" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="487.0" y="264.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Event Encoder</text>
+<text x="487.0" y="281.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Key, value for f3, f4</text>
+<text x="380" y="352" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Evidence-Cause Interaction: 4 cross-attentions</text>
+<rect x="40" y="362" width="161" height="72" rx="8" ry="8" fill="#FFFFFF" stroke="#66717E" stroke-width="1.5"/>
+<text x="120.5" y="385.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">f1 Self-contagion</text>
+<text x="120.5" y="402.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Same speaker's</text>
+<text x="120.5" y="419.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">past turns</text>
+<rect x="213" y="362" width="161" height="72" rx="8" ry="8" fill="#FFFFFF" stroke="#66717E" stroke-width="1.5"/>
+<text x="293.5" y="385.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">f2 Cross-emotion</text>
+<text x="293.5" y="402.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Other speakers'</text>
+<text x="293.5" y="419.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">past turns</text>
+<rect x="386" y="362" width="161" height="72" rx="8" ry="8" fill="#FFFFFF" stroke="#66717E" stroke-width="1.5"/>
+<text x="466.5" y="385.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">f3 Self-event</text>
+<text x="466.5" y="402.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">The utterance's</text>
+<text x="466.5" y="419.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">own event</text>
+<rect x="559" y="362" width="161" height="72" rx="8" ry="8" fill="#FFFFFF" stroke="#66717E" stroke-width="1.5"/>
+<text x="639.5" y="385.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">f4 Cross-event</text>
+<text x="639.5" y="402.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Other speakers'</text>
+<text x="639.5" y="419.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">past events</text>
+<rect x="24" y="474" width="712" height="56" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="380.0" y="498.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Feature Gating</text>
+<text x="380.0" y="515.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Element-wise sigmoid gate on each cause, 384-d each</text>
+<text x="344" y="316" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#3E4A56" text-anchor="start">Evidence as query</text>
+<text x="653" y="316" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#3E4A56" text-anchor="end">Speaker masks</text>
+<text x="380" y="576" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">CACG cause gate</text>
+<rect x="40" y="586" width="161" height="64" rx="8" ry="8" fill="#FFFFFF" stroke="#4338CA" stroke-width="1.5"/>
+<text x="120.5" y="614.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Descriptor h</text>
+<text x="120.5" y="631.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">12-d evidence summary</text>
+<rect x="213" y="586" width="161" height="64" rx="8" ry="8" fill="#FFFFFF" stroke="#4338CA" stroke-width="1.5"/>
+<text x="293.5" y="614.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Temperature τ</text>
+<text x="293.5" y="631.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Between 0.25 and 4</text>
+<rect x="386" y="586" width="161" height="64" rx="8" ry="8" fill="#FFFFFF" stroke="#4338CA" stroke-width="1.5"/>
+<text x="466.5" y="614.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Scorer z</text>
+<text x="466.5" y="631.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">One logit per cause</text>
+<rect x="559" y="586" width="161" height="64" rx="8" ry="8" fill="#FFFFFF" stroke="#4338CA" stroke-width="1.5"/>
+<text x="639.5" y="614.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Availability mask</text>
+<text x="639.5" y="631.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">No history: weight 0</text>
+<rect x="40" y="670" width="680" height="56" rx="8" ry="8" fill="#FFFFFF" stroke="#4338CA" stroke-width="1.5"/>
+<text x="380.0" y="694.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Cause weights g = softmax(z / τ)</text>
+<text x="380.0" y="711.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Fused feature R = [4g1 · f1 ; … ; 4g4 · f4], 1536-d</text>
+<rect x="24" y="766" width="440" height="56" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="244.0" y="790.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Classifier</text>
+<text x="244.0" y="807.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Linear layer: 7 emotions, focal loss</text>
+<rect x="24" y="846" width="440" height="56" rx="8" ry="8" fill="#FCEBD7" stroke="#B45309" stroke-width="1.5"/>
+<text x="244.0" y="870.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Log-linear LLM fusion</text>
+<text x="244.0" y="887.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">0.8 log p(ECERC) + 0.2 log p(LLM)</text>
+<rect x="488" y="838" width="248" height="72" rx="8" ry="8" fill="#FCEBD7" stroke="#B45309" stroke-width="1.5"/>
+<text x="612.0" y="861.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Qwen2.5-32B-Instruct</text>
+<text x="612.0" y="878.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Zero-shot, never trained on</text>
+<text x="612.0" y="895.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">MELD's labels</text>
+<rect x="24" y="926" width="440" height="56" rx="8" ry="8" fill="#E9E8FB" stroke="#4338CA" stroke-width="1.5"/>
+<text x="244.0" y="950.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Temperature scaling</text>
+<text x="244.0" y="967.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">One T fitted on validation, then softmax</text>
+<rect x="24" y="1006" width="712" height="43" rx="8" ry="8" fill="#FFFFFF" stroke="#66717E" stroke-width="1.5"/>
+<text x="380.0" y="1023.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Output for each utterance</text>
+<text x="380.0" y="1040.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Mean of 3 seeds: acc 68.17, wF1 67.11, mF1 53.77, ECE 3.18</text>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 610" width="760" height="610" role="img" aria-label="How the project fits together: three solutions, two merges">
+<title>How the project fits together: three solutions, two merges</title>
+<rect x="0" y="0" width="760" height="610" fill="#FFFFFF"/>
+<rect x="24" y="152" width="712" height="148" rx="8" ry="8" fill="#FAFBFC" stroke="#66717E" stroke-width="1.5"/>
+<rect x="24" y="324" width="346" height="262" rx="8" ry="8" fill="#FAFBFC" stroke="#66717E" stroke-width="1.5"/>
+<rect x="390" y="324" width="346" height="262" rx="8" ry="8" fill="#FAFBFC" stroke="#66717E" stroke-width="1.5"/>
+<path d="M 380 128 L 380.0 144.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="380,152 375.5,144.0 384.5,144.0" fill="#3D4852"/>
+<path d="M 197 300 L 197.0 316.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="197,324 192.5,316.0 201.5,316.0" fill="#3D4852"/>
+<path d="M 563 300 L 563.0 316.0" fill="none" stroke="#3D4852" stroke-width="1.5"/>
+<polygon points="563,324 558.5,316.0 567.5,316.0" fill="#3D4852"/>
+<text x="24" y="32" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#1F2933" text-anchor="start" font-weight="bold">How the project fits together: three solutions, two merges</text>
+<rect x="24" y="46" width="14" height="14" rx="3" ry="3" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="44" y="57" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="start">Shared base</text>
+<rect x="130.6" y="46" width="14" height="14" rx="3" ry="3" fill="#DFF3EF" stroke="#0F766E" stroke-width="1.5"/>
+<text x="150.6" y="57" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="start">L1 Divyansh Dubey</text>
+<rect x="276.79999999999995" y="46" width="14" height="14" rx="3" ry="3" fill="#FCEBD7" stroke="#B45309" stroke-width="1.5"/>
+<text x="296.79999999999995" y="57" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="start">L2 Keshav Mishra</text>
+<rect x="416.4" y="46" width="14" height="14" rx="3" ry="3" fill="#E9E8FB" stroke="#4338CA" stroke-width="1.5"/>
+<text x="436.4" y="57" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="start">L3 Lakshay Gupta</text>
+<rect x="24" y="72" width="712" height="56" rx="8" ry="8" fill="#F3F5F7" stroke="#66717E" stroke-width="1.5"/>
+<text x="380.0" y="96.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">ECERC release</text>
+<text x="380.0" y="113.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">The authors' code, precomputed features and trained checkpoints</text>
+<text x="380" y="174" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Individual solutions</text>
+<rect x="40" y="186" width="216" height="98" rx="8" ry="8" fill="#DFF3EF" stroke="#0F766E" stroke-width="1.5"/>
+<text x="148.0" y="214.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">L1: category confusion</text>
+<text x="148.0" y="231.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">IEMOCAP</text>
+<text x="148.0" y="248.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">WavLM audio + VAD head</text>
+<text x="148.0" y="265.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Authors' code, 20 seeds</text>
+<rect x="272" y="186" width="216" height="98" rx="8" ry="8" fill="#E9E8FB" stroke="#4338CA" stroke-width="1.5"/>
+<text x="380.0" y="214.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">L3: cause gating</text>
+<text x="380.0" y="231.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Both datasets</text>
+<text x="380.0" y="248.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">CACG + temperature scaling</text>
+<text x="380.0" y="265.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Rewritten code</text>
+<rect x="504" y="186" width="216" height="98" rx="8" ry="8" fill="#FCEBD7" stroke="#B45309" stroke-width="1.5"/>
+<text x="612.0" y="214.0" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">L2: class imbalance</text>
+<text x="612.0" y="231.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">MELD</text>
+<text x="612.0" y="248.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Zero-shot LLM fusion</text>
+<text x="612.0" y="265.0" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Authors' checkpoints</text>
+<text x="197" y="346" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Approach A: merged separately</text>
+<rect x="40" y="358" width="314" height="98" rx="8" ry="8" fill="#FFFFFF" stroke="#66717E" stroke-width="1.5"/>
+<text x="197.0" y="394.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">IEMOCAP: L1 + L3</text>
+<text x="197.0" y="411.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Authors' code, 20 seeds</text>
+<text x="197.0" y="428.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Ensemble wF1 72.43, mF1 71.14</text>
+<rect x="40" y="472" width="314" height="98" rx="8" ry="8" fill="#FFFFFF" stroke="#66717E" stroke-width="1.5"/>
+<text x="197.0" y="508.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">MELD: L2 + L3</text>
+<text x="197.0" y="525.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Rewritten code copy, 3 seeds</text>
+<text x="197.0" y="542.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Mean wF1 67.11, mF1 53.77</text>
+<text x="563" y="346" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">Approach B: one codebase</text>
+<rect x="406" y="358" width="314" height="98" rx="8" ry="8" fill="#FFFFFF" stroke="#66717E" stroke-width="1.5"/>
+<text x="563.0" y="394.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">IEMOCAP: L1 + L3</text>
+<text x="563.0" y="411.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Rewritten code, 5 seeds</text>
+<text x="563.0" y="428.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Ensemble wF1 72.77, mF1 71.52</text>
+<rect x="406" y="472" width="314" height="98" rx="8" ry="8" fill="#FFFFFF" stroke="#66717E" stroke-width="1.5"/>
+<text x="563.0" y="508.5" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#1F2933" text-anchor="middle" font-weight="bold">MELD: L2 + L3</text>
+<text x="563.0" y="525.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Rewritten code, 3 seeds</text>
+<text x="563.0" y="542.5" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3E4A56" text-anchor="middle">Ensemble wF1 67.10, mF1 53.82</text>
+</svg>

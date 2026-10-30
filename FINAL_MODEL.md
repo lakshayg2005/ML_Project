@@ -43,8 +43,9 @@ features ─► ECERC + CACG (×3 seeds) ─► mean probabilities ─► log-li
 ECE in %, 15 bins. The final models' ECE is after temperature scaling; the other rows are raw.
 
 The final model beats the authors' released checkpoints by about 1 wF1 on IEMOCAP and 0.5–0.7 wF1 / 2.5 macro-F1 on
-MELD, and cuts calibration error 4.4× (IEMOCAP) and 1.7× (MELD). Against our own retrained ECERC, which is the
-like-for-like comparison, the gains are +2.4 wF1 on IEMOCAP and +1.3 wF1 / +4.3 macro-F1 on MELD.
+MELD. Calibration is about level with the authors: once scaled the same way, their checkpoints reach ECE 2.81
+(IEMOCAP) and 3.02 (MELD). Against our own retrained ECERC, which is the like-for-like comparison, the gains are
++2.4 wF1 on IEMOCAP and +1.3 wF1 / +4.3 macro-F1 on MELD.
 
 ## 3. Ablation: what each part contributes
 
