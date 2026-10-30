@@ -9,9 +9,12 @@ ext/
   layers.py           transformer blocks copied verbatim from the release (same parameter names)
   model.py            ECERC for both datasets; gate='baseline' == official model (bit-exact, see test)
   cacg.py             CACG module + gate losses (self-contained)
-  losses.py           task loss + MERGE POINTS for Limitation 1 and 2
-  data.py             loaders, identical splits to the release (reads compact cache)
+  losses.py           task loss (+ focal, L2) and L1's soft-label / VAD losses
+  data.py             loaders, identical splits to the release (reads compact cache; optional L1 extras)
   prepare_data.py     one-time conversion of the released pickles -> float32 cache
+  prepare_extras.py   one-time alignment of L1's WavLM features + VAD / vote labels (IEMOCAP)
+  final_report.py     merged-model ablation incl. L2 LLM fusion -> runs/RESULTS_merged.md
+  dump_outputs.py     re-evaluate saved checkpoints to save valid/test outputs
   train.py            train / evaluate (one entry point, release hyper-parameters per dataset)
   calibrate.py        post-hoc global TS and cause-aware TS (fit on validation only)
   aggregate.py        tables (mean ± std over seeds) + figures -> runs/RESULTS.md, runs/figures/
@@ -42,7 +45,7 @@ python ext/train.py --dataset IEMOCAP --eval_ckpt IEMOCAP/ECERC_MODEL.pkl
 python ext/train.py --dataset MELD    --eval_ckpt MELD/ECERC_MODEL.pkl
 ```
 Retraining lands ~1 point below the released checkpoints (the authors note exact reproduction needs their
-environment). The official MELD schedule (lr 1e-5, 40 epochs) usually selects the last epoch, i.e. it is
+environment). `train.py` now defaults to the release loss per dataset (MELD focal γ = 1, IEMOCAP γ = 0). The official MELD schedule (lr 1e-5, 40 epochs) usually selects the last epoch, i.e. it is
 slightly under-trained; we keep it unchanged so that all comparisons are like-for-like.
 
 ## 3. What we found in the released code (relevant to the report)
@@ -110,23 +113,26 @@ python aggregate.py                     # -> runs/RESULTS.md and runs/figures/*.
 ```
 Model selection follows the release: best validation weighted-F1 epoch, test metrics reported at that epoch.
 
-## 6. Merge guide for Limitation 1 and 2
+## 6. Limitations 1 and 2 (merged)
 
-`model(...)` returns a dict:
+Limitations 1 and 2 are now merged into this codebase. The results, the final model and the demo UI are in
+[`FINAL_MODEL.md`](../../../FINAL_MODEL.md). `model(...)` returns a dict, and each extension hooks into one key:
 
-| key | shape | use |
+| key | shape | used by |
 |---|---|---|
-| `log_prob` | (N, C) | class-balanced / focal loss — **Limitation 2**: add a branch in `losses.build_task_loss` (`--task_loss cb` / `focal`) |
-| `fused` | (N, 4·384) | representation before the classifier — **Limitation 1**: implement `losses.contrastive_loss(fused, labels)`, enable with `--lambda_contrast` |
+| `log_prob` | (N, C) | task loss: `--focal_gamma` (L2); `soft_label_nll` with `--soft_beta` (L1) |
+| `fused` | (N, 4·384) | auxiliary VAD regression head, `--lambda_vad` (L1) |
 | `gate` | dict | CACG internals (used by `cacg.gate_losses`) |
 
-`train.run_epoch` already computes `L_task + λ_gate L_gate + λ_aux L_aux + λ_contrast L_contrast`
-(SOP Eq. 4), so each extension only touches its own function. Oversampling for MELD goes into
-`data.get_loaders` (a `WeightedRandomSampler` over dialogues).
+`--audio wavlm` (L1) swaps the IEMOCAP audio features for WavLM; run `prepare_extras.py` once first.
+L2's zero-shot LLM fusion is applied after training, in `final_report.py` (MELD only).
 
 ## 7. Results
 
 Full tables: `runs/RESULTS.md`; figures: `runs/figures/`. 3 seeds per row; test metrics at the best-validation epoch.
+
+> **Correction (2026-10-30).** The MELD numbers below were trained with γ = 0, but the release's `MELD/loss.py` uses focal γ = 1. The true retrained MELD baseline is 65.90 wF1 / 49.78 mF1 with raw ECE 3.62, and with that loss CACG does not beat it (65.51 / 49.25). IEMOCAP is unaffected. See [`FINAL_MODEL.md`](../../../FINAL_MODEL.md).
+
 
 | | IEMOCAP wF1 | IEMOCAP ECE raw → TS | MELD wF1 | MELD mF1 | MELD ECE raw → TS |
 |---|---|---|---|---|---|

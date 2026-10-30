@@ -1,15 +1,17 @@
 """Training objectives.
 
-Merge points for the other two extensions:
-  * Limitation 2 (class-balanced / focal): add a branch to `build_task_loss`.
-  * Limitation 1 (confusion-aware contrastive): implement `contrastive_loss(fused, labels)` on out['fused'].
+Merged extensions:
+  * Limitation 1 (Divyansh): soft labels from annotator votes (`soft_label_nll`) and an auxiliary VAD regression
+    head on out['fused'] (`vad_loss`); IEMOCAP only, the targets come from prepare_extras.py.
+  * Limitation 2 (Keshav): the zero-shot LLM fusion is post hoc (final_report.py), not a training loss.
+`--focal_gamma` is the release's own exponent: 1 on MELD, 0 on IEMOCAP.
 """
-import torch
+import torch.nn.functional as F
 from torch import nn
 
 
 class Loss(nn.Module):
-    """Original ECERC loss (focal form with gamma=0 -> class-weighted NLL)."""
+    """Original ECERC loss: -(1 - p_t)^gamma * alpha_t * log p_t (release: gamma=1 on MELD, 0 on IEMOCAP)."""
 
     def __init__(self, gamma=0, alpha=None):
         super().__init__()
@@ -25,9 +27,18 @@ class Loss(nn.Module):
 
 def build_task_loss(args, class_weights):
     if args.task_loss == 'ce':
-        return Loss(alpha=class_weights if args.class_weight else None)
+        return Loss(gamma=args.focal_gamma, alpha=class_weights if args.class_weight else None)
     raise ValueError(args.task_loss)
 
 
-def contrastive_loss(fused, labels):
-    return fused.new_zeros(())
+def soft_label_nll(log_prob, labels, votes, beta, class_weights=None):
+    """NLL against (1 - beta) * onehot(y) + beta * annotator votes, weighted by the hard label's class weight."""
+    target = (1 - beta) * F.one_hot(labels, log_prob.size(1)).float() + beta * votes
+    w = class_weights[labels] if class_weights is not None else 1.
+    return (w * -(target * log_prob).sum(1)).mean()
+
+
+def vad_loss(pred, vad_z, vmask):
+    """MSE between predicted and z-scored (valence, activation, dominance), on annotated utterances only."""
+    m = vmask > 0
+    return ((pred[m] - vad_z[m]) ** 2).mean() if m.any() else pred.sum() * 0
