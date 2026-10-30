@@ -61,11 +61,11 @@ fused_test = fuse(model_test, llm_test, w)
 
 ## 3. Notes
 
-- **Task loss.** `ext/losses.Loss` defaults to `gamma=0` (plain NLL). The released `MELD/train.py` and
-  `IEMOCAP/train.py` use `Loss(gamma=1)`, a focal loss (see upstream `MELD/loss.py`). Retrained with γ = 1 on seeds
+- **Task loss (MELD only).** `ext/losses.Loss` defaults to `gamma=0` (plain NLL). The released `MELD/train.py` uses
+  `Loss(gamma=1)`, a focal loss (see upstream `MELD/loss.py`); IEMOCAP's release does use `gamma=0` with class weights,
+  so `ext/` is correct there. Retrained with γ = 1 on seeds
   0–2, ECERC gives MELD test 66.00 wF1 / 50.40 mF1, against 65.39 / 48.96 for the `ext/` baseline. With γ = 1,
-  `train.py --dataset MELD --gate baseline --seed 0` should give test 67.51 acc / 66.54 wF1 / 51.37 mF1 (epoch 35) if
-  the two code paths are equivalent.
+  `Merge-L2-L3/ext/train.py` gave 65.72 / 49.57: closer, but not an exact match (see `Merge-L2-L3/README.md`).
 - **It carries over to retrained models.** Fusing these cached scores at w = 0.2 with ECERC retrained on seeds 0–2
   (release recipe) raised dev macro-F1 from 54.18 to 59.79 (+5.61), matching the released checkpoints (+5.63). The
   test set was not used for this check.
